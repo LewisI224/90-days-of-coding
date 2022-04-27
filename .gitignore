@@ -1,2 +1,4 @@
 /blog/frontend/website/node_modules
 /blog/frontend/website/.next
+/blog/frontend/rest-api/node_modules
+/blog/frontend/rest-api/.env
