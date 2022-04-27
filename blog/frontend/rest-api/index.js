@@ -2,6 +2,7 @@ const express = require("express")
 const helmet = require("helmet")
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
+const path = require("path")
 
 dotenv.config()
 
@@ -25,6 +26,8 @@ mongoose.connection.on("open", function() {
 app.use(helmet())
 
 app.use(require("./routes/index.js"))
+
+app.use("/assets", express.static(path.join(__dirname, "..", "..", "assets")))
 
 app.listen(PORT, function () {
   console.log(`Express app listening on port ${PORT}`)
