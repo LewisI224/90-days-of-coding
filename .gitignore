@@ -4,3 +4,5 @@
 /blog/frontend/rest-api/.env
 /blog/admin/website/node_modules
 /blog/admin/website/.next
+/blog/admin/rest-api/node_modules
+blog/admin/rest-api/.env
