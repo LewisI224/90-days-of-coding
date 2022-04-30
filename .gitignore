@@ -2,3 +2,5 @@
 /blog/frontend/website/.next
 /blog/frontend/rest-api/node_modules
 /blog/frontend/rest-api/.env
+/blog/admin/website/node_modules
+/blog/admin/website/.next
