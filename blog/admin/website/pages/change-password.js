@@ -5,6 +5,7 @@ import Header from "../components/header.js"
 import Sidebar from "../components/sidebar.js"
 
 import authUser from "../api/admin-user/auth.js"
+import changePassword from "../api/admin-user/changePassword.js"
 
 export default class extends Component {
   static async getInitialProps ({req, res}) {
@@ -44,7 +45,29 @@ export default class extends Component {
   }
 
   submitChangeRequest = () => {
-    this.setState({loading: true, error: false, errorMsg: false, success: false})
+    if (!this.state.currentPasswordInputValue) {
+      this.setState({error: true, errorMsg: "Current password field is required.", success: false})
+    } else if (!this.state.newPasswordInputValue) {
+      this.setState({error: true, errorMsg: "New password field is required.", success: false})
+    } else if (this.state.newPasswordInputValue !== this.state.confirmNewPasswordInputValue) {
+      this.setState({error: true, errorMsg: "New password values do not match.", success: false})
+    } else {
+      this.setState({loading: true, error: false, errorMsg: false, success: false})
+
+      const self = this
+
+      changePassword(this.state.currentPasswordInputValue, this.state.newPasswordInputValue, function(apiResponse) {
+        if (apiResponse.submitError) {
+          self.setState({loading: false, error: true, errorMsg: "An error occured.", success: false})
+        } else if (apiResponse.invalidPasswordCredentialError) {
+          self.setState({loading: false, error: true, errorMsg: "Current password credential is invalid.", success: false})
+        } else if (!apiResponse.authSuccess) {
+          window.location.href = "/login"
+        } else {
+          self.setState({loading: false, error: false, success: true})
+        }
+      })
+    }
   }
 
   render () {
