@@ -1,10 +1,26 @@
-import React, { Component } from "react"
+import { Component } from "react"
 import Head from "next/head"
 
 import Header from "../../components/header.js"
 import Sidebar from "../../components/sidebar.js"
 
+import getAllImages from "../../api/images/getAllImages.js"
+
 export default class extends Component {
+  static async getInitialProps ({req, res}) {
+    const apiResult = await getAllImages(req)
+
+    if (!apiResult.authSuccess) {
+      res.writeHead(302, { Location: "/login" })
+      res.end()
+    }
+
+    return {
+      images: apiResult && apiResult.files,
+      getDataError: apiResult && apiResult.getDataError
+    }
+  }
+
   render () {
     return (
       <div className="layout-wrapper">
@@ -15,6 +31,7 @@ export default class extends Component {
         <Sidebar page="images" />
         <div className="layout-content-container">
           {
+            !this.props.getDataError ?
             <div className="images-content">
               <div className="images-top-header">
                 <div className="images-page-header-label">
@@ -41,30 +58,39 @@ export default class extends Component {
                       <span></span>
                     </div>
                   </div>
-                  <div className="images-list-items-table-item">
-                    <div className="images-list-items-table-item-data filename">
-                      <span>Image Filename</span>
-                    </div>
-                    <div className="images-list-items-table-item-data link">
-                      {
-                        process.env.NODE_ENV === "development" ?
-                        <a href={`${process.env.DEV_ADMIN_API_URL}/assets/image-filename`}>
-                          <span>Link</span>
-                        </a> :
-                        <a href={`${process.env.PRODUCTION_FRONTEND_API_URL}/assets/image-filename`}>
-                          <span>Link</span>
-                        </a>
-                      }
-                    </div>
-                    <div className="images-list-items-table-item-data edit">
-                      <a href="/images/edit/filename.png">
-                        <span>Edit</span>
-                      </a>
-                      <span> &gt;</span>
-                    </div>
-                  </div>
+                  {
+                    this.props.images.map((image, index) => {
+                      return (
+                        <div key={index} className="images-list-items-table-item">
+                          <div className="images-list-items-table-item-data filename">
+                            <span>{image}</span>
+                          </div>
+                          <div className="images-list-items-table-item-data link">
+                            {
+                              process.env.NODE_ENV === "development" ?
+                              <a href={`${process.env.DEV_FRONTEND_API_URL}/assets/${image}`}>
+                                <span>Link</span>
+                              </a> :
+                              <a href={`${process.env.PRODUCTION_FRONTEND_API_URL}/assets/${image}`}>
+                                <span>Link</span>
+                              </a>
+                            }
+                          </div>
+                          <div className="images-list-items-table-item-data edit">
+                            <a href={`/images/edit/${image}`}>
+                              <span>Edit</span>
+                            </a>
+                            <span> &gt;</span>
+                          </div>
+                        </div>
+                      )
+                    })
+                  }
                 </div>
               </div>
+            </div> :
+            <div className="images-get-data-error">
+              <span>An error occurred.</span>
             </div>
           }
         </div>
