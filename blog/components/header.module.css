@@ -1,0 +1,17 @@
+@font-face {
+    font-family: logoFont;
+    src: url(../public/logo-font.ttf);
+}
+.header {
+    padding:10px;
+    background:#000;
+}
+
+.navitem {
+    margin: 3rem;
+}
+
+.logo {
+    font-family: logoFont;
+    color: #008f11;
+}
