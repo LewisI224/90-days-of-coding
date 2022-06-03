@@ -17,8 +17,6 @@ export default function Home({allPostsData}) {
     return (
         <Layout>
 
-        
-
         <section>
 
             <h2 className='headingLg'>Recent Blog Posts</h2>
@@ -28,6 +26,11 @@ export default function Home({allPostsData}) {
             </ul>
 
         </section>
+        <style jsx>{`
+        section {
+          width: 85%;
+        }
+      `}</style>
         
         </Layout>
     );

@@ -31,13 +31,19 @@ export default function Post({ postData }) {
             <title>{postData.title}</title>
         </Head>
         
-        <article>
+        <section>
             <h1 className='headingXl'>{postData.title}</h1>
             <div className='lightText'>
             <Date dateString={postData.date} />
             </div>
             <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
-        </article>
+        </section>
+        <style jsx>{`
+        section {
+          width: 60%;
+          margin-left: 15%;
+        }
+        `}</style>
         </Layout>
     );
 }

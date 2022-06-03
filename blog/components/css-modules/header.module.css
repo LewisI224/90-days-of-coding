@@ -1,9 +1,10 @@
 @font-face {
     font-family: logoFont;
-    src: url(../public/logo-font.ttf);
+    src: url(../../public/logo-font.ttf);
 }
 .header {
-    padding:10px;
+    height: 5%;
+    padding:1%;
     background:#000;
 }
 

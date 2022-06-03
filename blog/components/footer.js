@@ -4,7 +4,7 @@
 //contact email
 //tagline
 
-import styles from './footer.module.css'
+import styles from './css-modules/footer.module.css'
 
 export default function Footer () {
     return (
