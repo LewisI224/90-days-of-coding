@@ -1,5 +1,5 @@
 import Layout from '../components/layout';
-import BlogPosts from '../components/post-summary';
+import PostSummary from '../components/post-summary';
 
 import { getSortedPostsData } from '../lib/posts';
 
@@ -19,19 +19,21 @@ export default function Home({allPostsData}) {
 
         <section>
 
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to my blog!</h1>
+                <p class="lead">This website documents my work over the summer of 2022 and also showcases some of my other work.</p>
+                <hr class="my-4"></hr>
+
+            </div>
+
             <h2 className='headingLg'>Recent Blog Posts</h2>
 
-            <ul className='list'>
-                {allPostsData.map(({id, date, title}) => (<BlogPosts id={id} title={title} date={date}/>))}
+            <ul class="list-unstyled">
+                {allPostsData.map(({id, date, title, subtitle}) => (<PostSummary id={id} title={title} subtitle={subtitle} date={date}/>))}
             </ul>
 
         </section>
-        <style jsx>{`
-        section {
-          width: 85%;
-        }
-      `}</style>
-        
+
         </Layout>
     );
 }

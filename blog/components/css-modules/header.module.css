@@ -3,16 +3,37 @@
     src: url(../../public/logo-font.ttf);
 }
 .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 5%;
+    top: 0;
     padding:1%;
     background:#000;
+    
+    
 }
 
 .navitem {
     margin: 3rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1vw;
+    font-family: logoFont;
+}
+
+.navitem:hover {
+    color: #008f11;
 }
 
 .logo {
     font-family: logoFont;
     color: #008f11;
+    text-decoration: none;
+    font-size: 2vw;
+    vertical-align: middle;
+}
+
+.logo:hover {
+    color: #ffffff;
 }

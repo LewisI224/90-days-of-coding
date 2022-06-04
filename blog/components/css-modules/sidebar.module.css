@@ -1,8 +1,16 @@
 .sidebar {
-    height: 50%;
-    width: 15%;
+    width: 20%;
     position: fixed;
     top: 10%;
     right: 0;
-    background-color: lightblue;
+    text-align:center;
+    margin: 1%;
 }
+
+.link {
+    text-decoration: none;
+    color: #000000;
+}
+
+
+

@@ -7,8 +7,10 @@ export default function Header () {
         <div className={styles.header}>
             <div className={styles.navbar}>
                 <Link href="/" ><a className={styles.logo}>90 Days of Coding</a></Link>
-                <Link href="/all-posts"><a className={styles.navitem}>All Posts</a></Link>
-                <Link href="/about"><a className={styles.navitem}>About</a></Link>
+                
+                <Link href="/all-posts"><a className={styles.navitem}>View All Posts</a></Link>
+
+                <Link href="/portfolio"><a className={styles.navitem}>Portfolio</a></Link>
             </div>
         </div>
     );

@@ -1,0 +1,15 @@
+.title{
+    text-decoration: none;
+  }
+  
+.title:hover {
+text-decoration: underline;
+}
+
+.subtitle {
+
+}
+
+.date {
+
+}
