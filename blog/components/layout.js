@@ -17,6 +17,7 @@ export default function Layout({ children }) {
                 <div>{children}</div>
             </div>
             <Sidebar />
+            <div class="clear" style={{height: '60px'}}></div>
             <Footer />
         </div>
         

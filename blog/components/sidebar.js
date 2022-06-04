@@ -12,7 +12,9 @@ export default function Sidebar () {
                 alt="picture of me"
                 width='150%'
                 height='150%'
+                className="rounded-circle"
             />
+            
             {/* about */}
             <p>
                 I'm a recent Computer Science graduate and

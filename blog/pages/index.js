@@ -29,7 +29,7 @@ export default function Home({allPostsData}) {
             <h2 className='headingLg'>Recent Blog Posts</h2>
 
             <ul class="list-unstyled">
-                {allPostsData.map(({id, date, title, subtitle}) => (<PostSummary id={id} title={title} subtitle={subtitle} date={date}/>))}
+                {allPostsData.map(({id, date, title, subtitle, imgurl}) => (<PostSummary id={id} title={title} subtitle={subtitle} date={date} imgurl={imgurl}/>))}
             </ul>
 
         </section>
