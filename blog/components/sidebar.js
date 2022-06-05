@@ -8,7 +8,7 @@ export default function Sidebar () {
             <h1>About Me</h1>
             {/* picture */}
             <Image 
-                src='/../public/images/profile_picture.png'
+                src='/images/profile_picture.png'
                 alt="picture of me"
                 width='150%'
                 height='150%'
