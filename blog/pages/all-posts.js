@@ -3,19 +3,20 @@ import PostSummary from '../components/post-summary';
 
 import Head from 'next/head';
 
-import { getSortedPostsData } from '../lib/posts';
-
-export async function getStaticProps() {
-    const allPostsData = getSortedPostsData();
-    
-    return {
-        props: {
-            allPostsData,
-        },
-    };
-}
+import { useEffect, useState } from 'react'
 
 export default function AllPosts({allPostsData}) {
+
+    const [data, setData] = useState([]);
+    async function getData() {
+        const req = await fetch('/api/getPosts');
+        const newData = await req.json();
+        setData(newData);
+    }
+    useEffect(() => {
+        getData();
+    },[])
+
     return (
         <Layout>
         <Head>
