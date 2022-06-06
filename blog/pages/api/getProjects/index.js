@@ -8,17 +8,15 @@ const client = new faunadb.Client({secret, domain:"db.eu.fauna.com"})
 module.exports = async (req, res) => {
     try {
         const dbs = await client.query(
-            query.Reverse(
+
                 query.Map(
                     query.Paginate (
                         query.Match (
-                            query.Index('all_posts')
+                            query.Index('all_projects')
                         )
                     ),
                     (ref) => query.Get(ref)
                 )
-            )
-            
             )
             
         res.status(200).json(dbs.data);

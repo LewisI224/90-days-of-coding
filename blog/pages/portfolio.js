@@ -1,40 +1,26 @@
 import Layout from '../components/layout';
-import Image from 'next/image'
+import ProjectSummary from '../components/project-summary';
+
+import { useEffect, useState } from 'react'
 
 export default function Portfolio() {
+    const [projects, setProjects] = useState([]);
+    async function getProjects() {
+        const req = await fetch('/api/getProjects');
+        const newProjects = await req.json();
+        newProjects.length = 2;
+        setProjects(newProjects);
+    }
+    useEffect(() => {
+        getProjects();
+    },[])
     return (
         <Layout>
             <section>
 
             <h2>Portfolio</h2>
-            {/* Cards */}
-            {/* Each card one project */}
-            {/* Links to page describing project in more detail */}
-            <div className='row'>
-
-                <div className='col'>
-                    <div className='card mb-3' style={{width: '30rem'}}>
-                        
-                        <Image
-                        src={`/images/default.png`}
-                        width="960px"
-                        height="480px"
-                        layout='responsive'
-                        />
-                        <div className='card-body'>
-                            <h5 className='card-title'>
-                                Blog Website
-                            </h5>
-                            <p className='card-text'>
-                                Website created to document my work over Summer of 2022 and other work.
-                                Created using NextJS, React and Bootstrap.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-
-
+            <div className="row">
+                {projects.map((p) => (<ProjectSummary name={p.data.name} description={p.data.description} technologies={p.data.technologies} time={p.data.time} imgurl={p.data.imgurl}/>))}
             </div>
 
 
