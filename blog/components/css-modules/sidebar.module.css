@@ -1,15 +1,26 @@
-.sidebar {
-    width: 20%;
-    position: fixed;
-    top: 10%;
-    right: 0;
-    text-align:center;
-    margin: 1%;
+
+
+@media only screen and (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
 }
 
-.link {
-    text-decoration: none;
-    color: #000000;
+@media only screen and (min-width: 769px) {
+    .sidebar {
+        width: 20%;
+        position: absolute;
+        top: 10%;
+        right: 0;
+        text-align:center;
+        margin: 1%;
+    }
+    
+    .link {
+        text-decoration: none;
+        color: #000000;
+    }
 }
 
 

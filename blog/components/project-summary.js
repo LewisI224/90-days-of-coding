@@ -1,12 +1,14 @@
 import Image from 'next/image'
 import { parseISO, format } from 'date-fns';
 
+import styles from './css-modules/project-summary.module.css'
+
 export default function ProjectSummary ({name, description, technologies, time, imgurl}) {
     const date = parseISO(time);
     return (
         <div className="col">
-            <div>
-                <div className='card mb-3' key={name} style={{width: '35rem'}}>
+            <div className={styles.project}>
+                <div className='card mb-3' key={name} >
                 
                     
                     <h5 className="card-header"><time dateTime={time}>{format(date, 'MMMM yyyy')}</time></h5>
