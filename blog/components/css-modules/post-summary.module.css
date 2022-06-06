@@ -1,9 +1,9 @@
 .title{
     text-decoration: none;
-  }
+}
   
 .title:hover {
-text-decoration: underline;
+    text-decoration: underline;
 }
 
 .subtitle {

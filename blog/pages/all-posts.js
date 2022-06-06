@@ -21,13 +21,13 @@ export default function AllPosts({allPostsData}) {
         <Head>
             <title>90 Days of Coding - All Posts</title>
         </Head>
-        <section>
+        <section >
 
             <h2 className='headingLg'>All Blog Posts</h2>
-
-            <ul class="list-unstyled">
+            <div className="row">
                 {allPostsData.map(({id, date, title, subtitle, imgurl}) => (<PostSummary id={id} title={title} subtitle={subtitle} date={date} imgurl={imgurl}/>))}
-            </ul>
+            </div>
+            
           
         </section>
         

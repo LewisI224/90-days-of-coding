@@ -10,10 +10,10 @@ export default function Footer () {
     return (
         <div className={styles.footer}>
             <figure className={styles.text}>
-                <blockquote class="blockquote">
+                <blockquote className="blockquote">
                     <p>Too many people have opinions on things they know nothing about. And the more ignorant they are, the more opinions they have.</p>
                 </blockquote>
-                <figcaption class="blockquote-footer">
+                <figcaption className="blockquote-footer">
                     <cite title="Source Title">Fallout: New Vegas</cite>
                 </figcaption>
             </figure>

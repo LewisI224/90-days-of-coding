@@ -1,41 +1,40 @@
 import Date from '../../components/date';
 import Layout from '../../components/layout';
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 import Head from 'next/head';
 
-import { getAllPostIds, getPostData } from '../../lib/posts';
+export default function Post() {
+    const [data, setData] = useState([]);
+    const router = useRouter()
+    const {id} = router.query
+    
+    async function getData() {
+        const req = await fetch(`/api/post/${id}`);
+        const newData = await req.json();
+        setData(newData);
+    }
+    useEffect(() => {
+        if (router.isReady) {
+            const {id} = router.query
+        }
+        getData();
+    },[router.isReady])
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id);
-  return {
-    props: {
-      postData,
-    },
-  };
-}
-
-export async function getStaticPaths() {
-  const paths = getAllPostIds();
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export default function Post({ postData }) {
     return (
         <Layout>
           
         <Head>
-            <title>{postData.title}</title>
+            <title>{data.map((d) => ( <h1>{d.data.title}</h1> ))}</title>
         </Head>
         
         <section>
-            <h1>{postData.title}</h1>
-            <div>
-            <Date dateString={postData.date} />
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+            {data.map((d) => ( <h1>{d.data.title}</h1> ))}
+            {data.map((d) => ( <div><Date dateString={d.data.date} /></div> ))}
+            {data.map((d) => ( <div dangerouslySetInnerHTML={{__html: d.data.text}}></div> ))}
+            
+            
         </section>
 
         </Layout>

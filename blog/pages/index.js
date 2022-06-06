@@ -1,36 +1,37 @@
 import Layout from '../components/layout';
 import PostSummary from '../components/post-summary';
 
-import { getSortedPostsData } from '../lib/posts';
+import { useEffect, useState } from 'react'
 
-export async function getStaticProps() {
-    const allPostsData = getSortedPostsData();
-    allPostsData.length=1;
-    return {
-        props: {
-            allPostsData,
-        },
-    };
-}
+export default function Home() {
 
-export default function Home({allPostsData}) {
+    const [data, setData] = useState([]);
+    async function getData() {
+        const req = await fetch('/api/getPosts');
+        const newData = await req.json();
+        setData(newData);
+    }
+    useEffect(() => {
+        getData();
+    },[])
+
     return (
         <Layout>
 
         <section>
 
-            <div class="jumbotron">
-                <h1 class="display-4">Welcome to my blog!</h1>
-                <p class="lead">This website documents my work over the summer of 2022 and also showcases some of my other work.</p>
-                <hr class="my-4"></hr>
+            <div className="jumbotron">
+                <h1 className="display-4">Welcome to my blog!</h1>
+                <p className="lead">This website documents my work over the summer of 2022 and also showcases some of my other work.</p>
+                <hr className="my-4"></hr>
 
             </div>
 
             <h2 className='headingLg'>Recent Blog Posts</h2>
 
-            <ul class="list-unstyled">
-                {allPostsData.map(({id, date, title, subtitle, imgurl}) => (<PostSummary id={id} title={title} subtitle={subtitle} date={date} imgurl={imgurl}/>))}
-            </ul>
+            <div className="row">
+                {data.map((d) => (<PostSummary id={d.data.id} title={d.data.title} subtitle={d.data.subtitle} date={d.data.date} imgurl={d.data.imgurl}/>))}
+            </div>
 
         </section>
 
