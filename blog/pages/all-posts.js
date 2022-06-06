@@ -26,7 +26,7 @@ export default function AllPosts({allPostsData}) {
 
             <h2 className='headingLg'>All Blog Posts</h2>
             <div className="row">
-                {allPostsData.map(({id, date, title, subtitle, imgurl}) => (<PostSummary id={id} title={title} subtitle={subtitle} date={date} imgurl={imgurl}/>))}
+                {data.map((d) => (<PostSummary id={d.data.id} title={d.data.title} subtitle={d.data.subtitle} date={d.data.date} imgurl={d.data.imgurl}/>))}
             </div>
             
           
