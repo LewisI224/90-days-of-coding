@@ -47,7 +47,7 @@ export default function Home() {
 
             <h2 className='headingLg'>Recent Projects</h2>
             <div className="row">
-                {projects.map((p) => (<ProjectSummary name={p.data.name} description={p.data.description} technologies={p.data.technologies} time={p.data.time} imgurl={p.data.imgurl}/>))}
+                {projects.map((p) => (<ProjectSummary name={p.data.name} description={p.data.description} technologies={p.data.technologies} time={p.data.time} imgurl={p.data.imgurl} github={p.data.github} weblink={p.data.weblink} />))}
             </div>
 
         </section>
