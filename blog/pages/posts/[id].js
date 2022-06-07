@@ -1,5 +1,6 @@
-import Date from '../../components/date';
 import Layout from '../../components/layout';
+import PostBody from '../../components/post-body';
+
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
@@ -13,8 +14,10 @@ export default function Post() {
     async function getData() {
         const req = await fetch(`/api/post/${id}`);
         const newData = await req.json();
+        console.log(newData);
         setData(newData);
     }
+
     useEffect(() => {
         if (router.isReady) {
             const {id} = router.query
@@ -26,15 +29,11 @@ export default function Post() {
         <Layout>
           
         <Head>
-            <title>{data.map((d) => ( <h1>{d.data.title}</h1> ))}</title>
+            {data.map((d) => ( <title>{d.data.title}</title> ))}
         </Head>
         
         <section>
-            {data.map((d) => ( <h1>{d.data.title}</h1> ))}
-            {data.map((d) => ( <div><Date dateString={d.data.date} /></div> ))}
-            {data.map((d) => ( <div dangerouslySetInnerHTML={{__html: d.data.text}}></div> ))}
-            
-            
+            {data.map((d) => ( <PostBody title={d.data.title} subtitle={d.data.subtitle} date={d.data.date} imgurl={d.data.imgurl} text={d.data.text} /> ))}  
         </section>
 
         </Layout>

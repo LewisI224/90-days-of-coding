@@ -24,6 +24,7 @@ export default function PostSummary ({id, title, subtitle, date, imgurl}) {
                             width="960px"
                             height="480px"
                             layout='responsive'
+                            
                             />
                             </>
                         ) : (
