@@ -19,7 +19,7 @@ export default function PostSummary ({id, title, subtitle, date, imgurl}) {
                         {imgurl ? (
                             <>
                             <Image 
-                            src={`/images/${imgurl}.png`}
+                            src={`https://90-days-blog.s3.eu-west-2.amazonaws.com/${imgurl}.png`}
                             alt="Blog Post Image"
                             width="960px"
                             height="480px"
@@ -29,7 +29,7 @@ export default function PostSummary ({id, title, subtitle, date, imgurl}) {
                         ) : (
                             <>
                             <Image 
-                            src={`/images/default.png`}
+                            src={`https://90-days-blog.s3.eu-west-2.amazonaws.com/default.png`}
                             alt="Blog Post Image"
                             width="960px"
                             height="480px"

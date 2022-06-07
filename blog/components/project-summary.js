@@ -15,7 +15,7 @@ export default function ProjectSummary ({name, description, technologies, time, 
                     {imgurl ? (
                         <>
                         <Image 
-                        src={`/images/${imgurl}.png`}
+                        src={`https://90-days-blog.s3.eu-west-2.amazonaws.com/${imgurl}.png`}
                         alt="Project Image"
                         width="960px"
                         height="480px"
@@ -25,7 +25,7 @@ export default function ProjectSummary ({name, description, technologies, time, 
                     ) : (
                         <>
                         <Image 
-                        src={`/images/default.png`}
+                        src={`https://90-days-blog.s3.eu-west-2.amazonaws.com/default.png`}
                         alt="Blog Post Image"
                         width="960px"
                         height="480px"
