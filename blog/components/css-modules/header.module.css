@@ -8,13 +8,12 @@
     align-items: center;
     height: 5%;
     top: 0;
-    padding:1%;
     background:#000;
-    
-    
 }
 
 .navitem {
+    display: inline-block;
+    position: relative;
     margin: 3rem;
     color: #ffffff;
     text-decoration: none;
@@ -22,8 +21,22 @@
     font-family: logoFont;
 }
 
-.navitem:hover {
-    color: #008f11;
+
+
+.navitem:before {
+    background-color: #008f11;
+    content: '';
+    height: 2px;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+    width: 100%;
+}
+
+.navitem:hover:before {
+    width: 0;
 }
 
 .logo {
