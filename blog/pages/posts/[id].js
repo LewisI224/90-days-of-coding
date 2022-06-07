@@ -14,7 +14,6 @@ export default function Post() {
     async function getData() {
         const req = await fetch(`/api/post/${id}`);
         const newData = await req.json();
-        console.log(newData);
         setData(newData);
     }
 

@@ -20,6 +20,7 @@ export default function PostBody({title, subtitle, date, imgurl, text}) {
                     height="480px"
                     layout='responsive'
                     className="border border-dark rounded"
+                    priority='true'
                     />
                     </>
                 ) : (
@@ -31,6 +32,7 @@ export default function PostBody({title, subtitle, date, imgurl, text}) {
                     height="480px"
                     layout='responsive'
                     className="border border-dark rounded"
+                    priority='true'
                     />
                     </>
                 )}

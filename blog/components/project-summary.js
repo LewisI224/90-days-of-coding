@@ -9,8 +9,6 @@ export default function ProjectSummary ({name, description, technologies, time, 
         <div className="col">
             <div className={styles.project}>
                 <div className='card mb-3' >
-                
-                    
                     <h5 className="card-header"><time dateTime={time}>{format(date, 'MMMM yyyy')}</time></h5>
                     <div>
                         {imgurl ? (
@@ -21,6 +19,7 @@ export default function ProjectSummary ({name, description, technologies, time, 
                             width="960px"
                             height="480px"
                             layout='responsive'
+                            priority='true'
                             />
                             </>
                         ) : (
@@ -31,6 +30,7 @@ export default function ProjectSummary ({name, description, technologies, time, 
                             width="960px"
                             height="480px"
                             layout='responsive'
+                            priority='true'
                             />
                             </>
                         )}
