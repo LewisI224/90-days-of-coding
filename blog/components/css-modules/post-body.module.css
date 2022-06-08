@@ -4,3 +4,10 @@
     width: 50%;
     padding:1%;
 }
+
+.text {
+    display:block;
+    margin:auto;
+    width: 75%;
+    padding:1%;
+}

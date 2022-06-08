@@ -21,6 +21,10 @@
         text-decoration: none;
         color: #000000;
     }
+
+    .list {
+        list-style: none;
+      }
 }
 
 

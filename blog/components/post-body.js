@@ -6,11 +6,12 @@ import styles from './css-modules/post-body.module.css'
 export default function PostBody({title, subtitle, date, imgurl, text}) {
     return (
         <div>
-            <h1>{title}</h1>
             
-            <div><Date dateString={date} /></div>
             
             <div className={styles.image}>
+                <h1>{title}</h1>
+                
+                <div><Date dateString={date} /></div>
                 {imgurl ? (
                     <>
                     <Image 
@@ -36,11 +37,13 @@ export default function PostBody({title, subtitle, date, imgurl, text}) {
                     />
                     </>
                 )}
+            <figcaption className="figure-caption">{subtitle}</figcaption>
             </div>
             
-            <h5>{subtitle}</h5>
+            
+            
 
-            <div dangerouslySetInnerHTML={{__html: text  }}></div>
+            <div className={styles.text} dangerouslySetInnerHTML={{__html: text  }}></div>
 
         </div>
     )

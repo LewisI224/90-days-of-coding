@@ -7,7 +7,7 @@ import styles from './css-modules/post-summary.module.css'
 export default function PostSummary ({id, title, subtitle, date, imgurl}) {
 
     return (
-        <div className="col">
+        <div className="col-6">
             
         <div >
             <Link href={`/posts/${id}`}>
