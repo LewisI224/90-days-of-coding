@@ -30,7 +30,7 @@ export default function Layout({ children }) {
                         <div>{children}</div>
                     </div>
                     <Sidebar />
-                    <div className={styles.gap} style={{height: '60px'}}></div>
+                    
 
                     <div className={styles.footer}>
                         <Footer />
