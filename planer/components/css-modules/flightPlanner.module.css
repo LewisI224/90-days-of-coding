@@ -1,0 +1,51 @@
+
+
+.forms {
+    display: flex;
+    justify-content: center;
+}
+
+.searchForm {
+    display: inline-block;
+    border-style: solid ;
+    border-color: var(--sky-blue);
+    padding: 1%;
+    margin: 1%;
+}
+
+.resultsForm {
+    display: inline-block;
+    border-style: solid;
+    border-color: var(--sky-blue);
+    padding: 1%;
+    margin: 1%;
+}
+
+.submit {
+    background-color: var(--sky-blue);
+    border: none;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+.submit:hover {
+    background-color: white;
+    color: var(--sky-blue);
+    border: 2px dotted var(--sky-blue);
+}
+
+.submit > a {
+    text-decoration: none;
+    color: white;
+}
+
+.submit:hover > a {
+    color: var(--sky-blue);
+}
+
+.error {
+    color: red;
+}
