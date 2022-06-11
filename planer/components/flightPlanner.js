@@ -43,6 +43,15 @@ export default function Home() {
     }
 
     function noFlight() {
+        document.getElementById("resultDest").value = ""
+        document.getElementById("resultDateOut").value = ""
+        document.getElementById("resultDateBack").value = ""
+        document.getElementById("resultPrice").value = ""
+        document.getElementById("resultPricePP").value = ""
+        document.getElementById("Carrier").value = ""
+
+        document.getElementById("book").href = ""
+
         document.getElementById("errormessage").innerHTML = "No Flights Available!"
     }
 
@@ -69,12 +78,12 @@ export default function Home() {
             <div className={styles.resultsForm}>
 
                 <form className={styles.form}>
-                    <label>Destination</label><input id="resultDest" name="destination" type="text" defaultValue="Destination" disabled></input>
-                    <label>Outgoing Flight Time</label><input id="resultDateOut" name="dateOut" type="text" defaultValue="Date To" disabled></input>
-                    <label>Return Flight Time</label><input id="resultDateBack" name="dateBack" type="text" defaultValue="Date Back" disabled></input>
-                    <label>Total Price</label><input id="resultPrice" name="price" type="text" defaultValue="Total Price" disabled></input>
-                    <label>Price Per Person</label><input id="resultPricePP" name="pricePP" type="text" defaultValue="Price Per Person" disabled></input>
-                    <label>Airline</label><input id="Carrier" name="flightNo" type="text" defaultValue="Airline" disabled></input>
+                    <label>Destination</label><input id="resultDest" name="destination" type="text" disabled></input>
+                    <label>Outgoing Flight Time</label><input id="resultDateOut" name="dateOut" type="text" disabled></input>
+                    <label>Return Flight Time</label><input id="resultDateBack" name="dateBack" type="text" disabled></input>
+                    <label>Total Price</label><input id="resultPrice" name="price" type="text" disabled></input>
+                    <label>Price Per Person</label><input id="resultPricePP" name="pricePP" type="text" disabled></input>
+                    <label>Airline</label><input id="Carrier" name="flightNo" type="text" disabled></input>
                     <button className={styles.submit}><a id="book" name="book" href="">Go To Book</a></button>
                 </form>
                 <label className={styles.error} id="errormessage"></label>
