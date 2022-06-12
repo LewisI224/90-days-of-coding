@@ -1,8 +1,18 @@
-
-
-.forms {
+.forms{
     display: flex;
     justify-content: center;
+}
+
+.form > input{
+    padding: 5px;
+    margin: 5px;
+    display: block;
+}
+
+.form > select{
+    padding: 5px;
+    margin: 5px;
+    display: block;
 }
 
 .searchForm {
