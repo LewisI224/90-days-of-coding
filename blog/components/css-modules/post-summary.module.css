@@ -6,3 +6,9 @@
 .link:hover {
     color: #000000;
 }
+
+@media only screen and (max-width: 660px) {
+    .image {
+        display: none;
+    }
+}

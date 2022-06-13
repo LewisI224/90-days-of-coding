@@ -21,7 +21,7 @@ export default function Portfolio() {
             <h2>About Me</h2>
             <div>
                 <p>
-                I studied at Heriot-Watt University from September 2018 to June 2022, graduating with a 1st in Computer Science.
+                My name is Lewis Inches and I'm a recent Computer Science graduate. I studied at Heriot-Watt University from September 2018 to June 2022, graduating with a 1st in Computer Science.
                 During this time I interned with BT Security for a summer helping to design and implement a series of virtualized lab environments for other staff to train on as well as develop and test new software before deploying to client systems.
                 </p>
                 <p>

@@ -16,7 +16,7 @@ export default function PostSummary ({id, title, subtitle, date, imgurl}) {
                     <div className='card mb-3' >
                         
                         <h5 className="card-header"><Date dateString={date} /></h5>
-                        <div>
+                        <div className={styles.image}>
                             {imgurl ? (
                                 <>
                                 <Image 

@@ -4,29 +4,31 @@
 }
 .header {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 5%;
-    top: 0;
     background:#000;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
 }
 
 .navitem {
     display: inline-block;
     position: relative;
-    margin: 3rem;
     color: #ffffff;
     text-decoration: none;
-    font-size: 1vw;
     font-family: logoFont;
+    font-size: 1.5rem;
+    margin-right: 2rem;
+    margin-left: 2rem;
 }
 
 .navitem:before {
     background-color: #008f11;
     content: '';
-    height: 2px;
+    height: 0.1rem;
     position: absolute;
-    bottom: -1px;
+    bottom: -5%;
     left: 50%;
     transform: translateX(-50%);
     transition: width 0.3s ease-in-out;
@@ -41,10 +43,34 @@
     font-family: logoFont;
     color: #008f11;
     text-decoration: none;
-    font-size: 2vw;
-    vertical-align: middle;
+    font-size: 3rem;
+    
 }
 
 .logo:hover {
     color: #ffffff;
+}
+
+@media only screen and (max-width: 1653px) {
+    .logo {
+      display: none;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .navitem {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .navitem {
+        font-size: 0.75rem;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .navitem {
+        font-size: 0.6rem;
+    }
 }

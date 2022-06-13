@@ -10,7 +10,7 @@ export default function ProjectSummary ({name, description, technologies, time, 
             <div className={styles.project}>
                 <div className='card mb-3' >
                     <h5 className="card-header"><time dateTime={time}>{format(date, 'MMMM yyyy')}</time></h5>
-                    <div>
+                    <div className={styles.image}>
                         {imgurl ? (
                             <>
                             <Image 
@@ -39,26 +39,27 @@ export default function ProjectSummary ({name, description, technologies, time, 
                         
                     <div className="card-body">
                         <h5 className="card-title">{name}</h5>
-                        <p className='card-text'>{description}</p>
-                        {github ? (
-                            <>
-                            <a href={github} style={{ marginRight: '1%' }} className="btn btn-primary">GitHub Link</a>
-                            </>
-                        ) : (
-                            <>
-                            </>
-                        )
-                        }
-                        {weblink ? (
-                            <>
-                            <a href={weblink} className="btn btn-primary">Website Link</a>
-                            </>
-                        ) : (
-                            <>
-                            </>
-                        )
-                        }
-
+                        <div className={styles.description}><p className='card-text'>{description}</p></div>
+                        
+                            {github ? (
+                                <>
+                                <div className={styles.links}><a href={github} style={{ marginRight: '1%' }} className="btn btn-primary">GitHub Link</a></div>
+                                </>
+                            ) : (
+                                <>
+                                </>
+                            )
+                            }
+                            {weblink ? (
+                                <>
+                                <div className={styles.links}><a href={weblink} className="btn btn-primary">Website Link</a></div>
+                                </>
+                            ) : (
+                                <>
+                                </>
+                            )
+                            }
+                        
                     </div>
                     <div className="card-footer text-muted">
                         <p className='card-text'>{technologies}</p>

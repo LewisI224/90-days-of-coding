@@ -1,4 +1,5 @@
 import Layout from '../components/layout';
+import Jumbotron from '../components/jumbotron';
 import PostSummary from '../components/post-summary';
 import ProjectSummary from '../components/project-summary';
 
@@ -33,20 +34,16 @@ export default function Home() {
 
         <section>
 
-            <div className="jumbotron">
-                <h1 className="display-4">Welcome to my blog!</h1>
-                <p className="lead">This website documents my work over the summer of 2022 and also showcases some of my other work.</p>
-                <hr className="my-4"></hr>
+            <Jumbotron />
 
-            </div>
 
             <h2 className='headingLg'>Recent Blog Posts</h2>
-            <div className="row">
+            <div className="row" style={{margin: ' 10px'}}>
                 {data.map((d) => (<PostSummary id={d.data.id} title={d.data.title} subtitle={d.data.subtitle} date={d.data.date} imgurl={d.data.imgurl}/>))}
             </div>
 
             <h2 className='headingLg'>Recent Projects</h2>
-            <div className="row">
+            <div className="row" style={{margin: ' 10px'}}>
                 {projects.map((p) => (<ProjectSummary name={p.data.name} description={p.data.description} technologies={p.data.technologies} time={p.data.time} imgurl={p.data.imgurl} github={p.data.github} weblink={p.data.weblink} />))}
             </div>
 

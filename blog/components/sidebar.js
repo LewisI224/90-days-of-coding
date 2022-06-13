@@ -17,9 +17,11 @@ export default function Sidebar () {
             
             {/* about */}
             <p>
-                I'm a recent Computer Science graduate and
+                My name is Lewis Inches and I'm a recent Computer Science graduate and
                 soon to be Software Engineer at Skyscanner
                 in Edinburgh!
+
+                <br></br>This blog is to document my learning before starting in my new job.
             </p>
             {/* contact */}
             <h1>Contact Info</h1>

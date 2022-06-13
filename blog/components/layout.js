@@ -23,23 +23,18 @@ export default function Layout({ children }) {
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossOrigin="anonymous"></script>
             </Head>
 
-            <div className={styles.content}>
-                <div className={styles.contentwrap}>
-                    <Header />
-                    <div>
-                        <div>{children}</div>
-                    </div>
-                    <Sidebar />
-                    
 
-                    <div className={styles.footer}>
-                        <Footer />
-                    </div>
+                <Header />
+
+                <div>
+                    {children}
                 </div>
+
+                <Sidebar />
+  
+                <Footer />
+                
             </div>
-            
-            
-        </div>
         
     )
     

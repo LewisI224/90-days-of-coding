@@ -19,13 +19,15 @@ export default function AllPosts() {
 
     return (
         <Layout>
+            
         <Head>
             <title>90 Days of Coding - All Posts</title>
         </Head>
+
         <section >
 
-            <h2 className='headingLg'>All Blog Posts</h2>
-            <div className="row">
+            <h2>All Blog Posts</h2>
+            <div className="row" style={{margin: ' 10px'}}>
                 {data.map((d) => (<PostSummary id={d.data.id} title={d.data.title} subtitle={d.data.subtitle} date={d.data.date} imgurl={d.data.imgurl}/>))}
             </div>
             

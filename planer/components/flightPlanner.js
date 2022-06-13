@@ -92,15 +92,15 @@ export default function Home() {
                         
                     <label>Departure Airport</label><input id="departure" name="departure" type="text" defaultValue="Edinburgh"></input>
                     <label>Destination Airport</label><input id="destination" name="destination" type="text" defaultValue="ROM"></input>
-                    {/*                     
-                    <label>Type of Holiday</label>
+                                        
+                    {/* <label>Type of Holiday</label>
                     <select name="holidayType" id="holidayType">
                         <option value="beach">Relax on the Beach</option>
                         <option value="city">Explore a City</option>
                         <option value="snow">Snowy Adventure</option>
                         <option value="party">Non-stop Party</option>
-                    </select>
-                    */}
+                    </select> */}
+                   
                     <label>Month of Travel</label><input id="month" name="month" type="month" defaultValue="2022-07" min={`${getNextMonthAndCurrentYear()}`}></input>
                     <label>How Many Days</label><input id="days" name="days" type="number" defaultValue="7" min="1" max="28"></input>
                     <label>Budget</label><input id="budget" name="budget" type="number" defaultValue="750" min="25"></input>
