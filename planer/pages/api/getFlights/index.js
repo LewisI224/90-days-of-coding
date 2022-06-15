@@ -27,7 +27,7 @@ module.exports = async (req, res) => {
         //convert user input into a usable format
         var date = new Date((data.month));
         //build the url to search for flights
-        const url =`https://tequila-api.kiwi.com/v2/search?fly_from=${departureID}&fly_to=${data.destination}&dateFrom=01/${date.getMonth()+1}/${date.getFullYear()}&dateTo=28/${date.getMonth()+1}/${date.getFullYear()}&return_from=01/${date.getMonth()+1}/${date.getFullYear()}&return_to=28/${date.getMonth()+1}/${date.getFullYear()}&curr=GBP&max_stopovers=0&nights_in_dst_from=${data.days}&nights_in_dst_to=${data.days}&adults=${data.people}&selected_cabins=${data.class}&price_from=0&price_to=${data.budget}&limit=1`
+        const url =`https://tequila-api.kiwi.com/v2/search?fly_from=${departureID}&fly_to=${data.destination}&dateFrom=01/${date.getMonth()+1}/${date.getFullYear()}&dateTo=28/${date.getMonth()+1}/${date.getFullYear()}&return_from=01/${date.getMonth()+1}/${date.getFullYear()}&return_to=28/${date.getMonth()+1}/${date.getFullYear()}&curr=GBP&max_stopovers=0&nights_in_dst_from=${data.days}&nights_in_dst_to=${data.days}&adults=${data.people}&selected_cabins=${data.class}&price_from=0&price_to=${data.budget}&limit=10`
         const response = await fetch(url, options);
         const result = await response.json();
         res.status(200);
