@@ -30,7 +30,6 @@ module.exports = async (req, res) => {
         
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log(result);
         res.status(200);
         res.end(JSON.stringify(result));
 

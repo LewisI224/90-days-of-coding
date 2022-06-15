@@ -2,10 +2,10 @@
     display: flex;
     position:absolute;
     height: 70vh;
-    width: 100vw;
+    width: 50vw;
     padding: 0.1vw;
-    margin: 0.1vw;
-
+    margin: 0.1vw 25vw;
+    justify-content: center;
 
 }
 
@@ -13,20 +13,15 @@
     display:absolute;
     padding: 0.1vw;
     overflow-y: scroll;
-    width: 20vw;
-    margin-right: auto;
+    width: 50%;
     margin-left: 0.5vw;
     display:block;
 
 }
 
 .searchForm {
-    border-style: solid ;
-    border-color: var(--sky-blue);
-    border-radius: 8px;
     padding: 1vh;
-    width: 20vw;;
-    margin-left: auto;
+    width: 50%;
     margin-right: 0.5vw;
     display:flex;
     justify-content: center;
@@ -67,4 +62,30 @@
 
 .error {
     color: red;
+}
+
+.loading {
+    position: absolute;
+    top: 33%;
+    bottom: auto;
+    left: 33%;
+    right: 33%;
+    width: 16rem;
+    height: 16rem;
+    border: 10px solid var(--sky-blue);
+    border-top: 20px solid grey;
+    border-radius: 100%;
+    margin: auto;
+    animation: spin 2s infinite linear;
+    visibility: hidden;
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }

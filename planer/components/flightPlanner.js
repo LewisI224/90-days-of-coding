@@ -5,8 +5,16 @@ import { useEffect, useState } from 'react'
 
 export default function Home() {
     
+
+    
     const getFlight = async (event) => {
         event.preventDefault();
+        const loadingWheel = document.getElementById("loading");
+        const forms = document.getElementById("forms");
+        const searchForm = document.getElementsByTagName("fieldset");
+        disableFormInput(loadingWheel, forms, searchForm);
+        
+       
         const res = await fetch('/api/getFlights', {
             method: 'POST',
             headers: {
@@ -30,11 +38,25 @@ export default function Home() {
             if (result.data[0]) {
                 // call function to format the data
                setFlightData(await formatData(result.data));
+               enableFormInput(loadingWheel, forms, searchForm);
+               
             }
             else {
                 noFlight();
             }
         }
+    }
+
+    function disableFormInput(loadingWheel, forms, searchForm) {
+        forms.style.backgroundColor = "#E5E7E9";
+        loadingWheel.style.visibility = 'visible';
+        searchForm[0].setAttribute("disabled", "true")
+    }
+
+    function enableFormInput(loadingWheel, forms, searchForm) {
+        loadingWheel.style.visibility = 'hidden';
+        forms.style.backgroundColor = "white";
+        searchForm[0].removeAttribute("disabled")
     }
     const [flightData, setFlightData] = useState([{flyFromAirport: '', flyToAirport: '', flyFromCity: '', flyToCity: '', dateOut: '', dateBack: '', price: '', airline: '', bookingLink: ''}]);
 
@@ -77,7 +99,6 @@ export default function Home() {
             
             formattedData.push(formattedDatum);
         }
-        console.log(formattedData);
         return await formattedData;
     }
 
@@ -106,8 +127,8 @@ export default function Home() {
     return (
         <section>
 
-        <div className={styles.forms}>
-            <div className={styles.searchForm}>
+        <div id="forms" className={styles.forms}>
+            <fieldset className={styles.searchForm}>
                 <form onSubmit={getFlight}>
                         
                     <label>Departure Airport</label><input className={styles.inputs} id="departure" name="departure" type="text" defaultValue="Edinburgh"></input>
@@ -139,7 +160,7 @@ export default function Home() {
 
                 </form>
 
-            </div>
+            </fieldset>
 
             <div className={styles.results}>
                 {flightData.map((d) => (<ResultSummary dest={d.flyToCity} outgoing={d.dateOut} back={d.dateBack} price={d.price} airline={d.airline}/>))}
@@ -149,9 +170,12 @@ export default function Home() {
 
         </div>
 
-        
+        <div id="loading" className={styles.loading}>
+
+        </div>
 
         </section>
+        
 
     )
 }
