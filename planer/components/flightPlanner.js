@@ -12,7 +12,7 @@ export default function Home() {
         const loadingWheel = document.getElementById("loading");
         const forms = document.getElementById("forms");
         const searchForm = document.getElementsByTagName("fieldset");
-        disableFormInput(loadingWheel, forms, searchForm);
+        // disableFormInput(loadingWheel, forms, searchForm);
         
        
         const res = await fetch('/api/getFlights', {
@@ -38,7 +38,7 @@ export default function Home() {
             if (result.data[0]) {
                 // call function to format the data
                setFlightData(await formatData(result.data));
-               enableFormInput(loadingWheel, forms, searchForm);
+            //    enableFormInput(loadingWheel, forms, searchForm);
                
             }
             else {
@@ -47,17 +47,17 @@ export default function Home() {
         }
     }
 
-    function disableFormInput(loadingWheel, forms, searchForm) {
-        forms.style.backgroundColor = "#E5E7E9";
-        loadingWheel.style.visibility = 'visible';
-        searchForm[0].setAttribute("disabled", "true")
-    }
+    // function disableFormInput(loadingWheel, forms, searchForm) {
+    //     searchForm[0].style.backgroundColor = "#E5E7E9";
+    //     loadingWheel.style.visibility = 'visible';
+    //     searchForm[0].setAttribute("disabled", "true")
+    // }
 
-    function enableFormInput(loadingWheel, forms, searchForm) {
-        loadingWheel.style.visibility = 'hidden';
-        forms.style.backgroundColor = "white";
-        searchForm[0].removeAttribute("disabled")
-    }
+    // function enableFormInput(loadingWheel, forms, searchForm) {
+    //     loadingWheel.style.visibility = 'hidden';
+    //     searchForm[0].style.backgroundColor = "white";
+    //     searchForm[0].removeAttribute("disabled")
+    // }
     const [flightData, setFlightData] = useState([{flyFromAirport: '', flyToAirport: '', flyFromCity: '', flyToCity: '', dateOut: '', dateBack: '', price: '', airline: '', bookingLink: ''}]);
 
     async function getAirlineName(code) {
@@ -125,54 +125,56 @@ export default function Home() {
     }
 
     return (
-        <section>
+        <section >
 
-        <div id="forms" className={styles.forms}>
-            <fieldset className={styles.searchForm}>
-                <form onSubmit={getFlight}>
-                        
-                    <label>Departure Airport</label><input className={styles.inputs} id="departure" name="departure" type="text" defaultValue="Edinburgh"></input>
-                                        
-                    <label>Type of Holiday</label>
-                    <select className={styles.inputs} name="holidayType" id="holidayType">
-                        <option value="MAD">Relax on the Beach</option>
-                        <option value="CDG">Explore a City</option>
-                        <option value="GVA">Snowy Adventure</option>
-                        <option value="IBZ">Non-stop Party</option>
-                    </select>
-                   
-                    <label>Month of Travel</label><input className={styles.inputs} id="month" name="month" type="month" defaultValue="2022-07" min={`${getNextMonthAndCurrentYear()}`}></input>
-                    <label>How Many Days</label><input className={styles.inputs} id="days" name="days" type="number" defaultValue="7" min="1" max="28"></input>
-                    <label>Budget</label><input className={styles.inputs} id="budget" name="budget" type="number" defaultValue="750" min="25"></input>
+                <div className='row justify-content-between p-5 vh-100 vw-90'>
+                    <div className='col-3 p-5 mt-5 h-75 form-group row text-light'>
+                        <fieldset>
+                            <form onSubmit={getFlight}>
+                                <h1>Find Flights</h1>
+                                <label>Departure Airport</label><input className="form-control" id="departure" name="departure" type="text" defaultValue="Edinburgh"></input>
+                                                    
+                                <label>Type of Holiday</label>
+                                <select className="form-control" name="holidayType" id="holidayType">
+                                    <option value="MAD">Relax on the Beach</option>
+                                    <option value="CDG">Explore a City</option>
+                                    <option value="GVA">Snowy Adventure</option>
+                                    <option value="IBZ">Non-stop Party</option>
+                                </select>
+                            
+                                <label>Month of Travel</label><input className="form-control" id="month" name="month" type="month" defaultValue="2022-07" min={`${getNextMonthAndCurrentYear()}`}></input>
+                                <label>How Many Days</label><input className="form-control" id="days" name="days" type="number" defaultValue="7" min="1" max="28"></input>
+                                <label>Budget</label><input className="form-control" id="budget" name="budget" type="number" defaultValue="750" min="25"></input>
+            
+                                <label>Cabin Class</label>
+                                <select className="form-control" name="class" id="class">
+                                    <option value="M">Economy</option>
+                                    <option value="W">Premium Economy</option>
+                                    <option value="C">Business</option>
+                                    <option value="F">First</option>
+                                </select>
+                                
+            
+                                <label>How Many People</label><input className="form-control" id="people" name="people" type="number" defaultValue="2" min="1" max="9"></input>
+            
+                                <button className=" mt-3 btn btn-light" id="submit" type="submit">Submit</button>
+            
+                            </form>
+                        </fieldset>
+                    </div>
 
-                    <label>Cabin Class</label>
-                    <select className={styles.inputs} name="class" id="class">
-                        <option value="M">Economy</option>
-                        <option value="W">Premium Economy</option>
-                        <option value="C">Business</option>
-                        <option value="F">First</option>
-                    </select>
+                    <div className='col-7 px-5 h-100 overflow-scroll'>
+                        <h1>Results</h1>
+                        {flightData.map((d) => (<ResultSummary dest={d.flyToCity} outgoing={d.dateOut} back={d.dateBack} price={d.price} airline={d.airline}/>))}
+                        <div id="loading" className={styles.loading}></div>
+                    </div>
                     
+                    <label className={styles.error} id="errormessage"></label>  
+                </div>
+                <div className='row'>
 
-                    <label>How Many People</label><input className={styles.inputs} id="people" name="people" type="number" defaultValue="2" min="1" max="9"></input>
-
-                    <button className={styles.submit} id="submit" type="submit">Submit</button>
-
-                </form>
-
-            </fieldset>
-
-            <div className={styles.results}>
-                {flightData.map((d) => (<ResultSummary dest={d.flyToCity} outgoing={d.dateOut} back={d.dateBack} price={d.price} airline={d.airline}/>))}
-            </div>
-
-            <label className={styles.error} id="errormessage"></label>     
-
-        </div>
-
-        <div id="loading" className={styles.loading}>
-
-        </div>
+                </div>
+                   
 
         </section>
         
