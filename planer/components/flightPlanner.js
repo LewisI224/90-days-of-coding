@@ -10,9 +10,9 @@ export default function Home() {
     const getFlight = async (event) => {
         event.preventDefault();
         const loadingWheel = document.getElementById("loading");
-        const forms = document.getElementById("forms");
         const searchForm = document.getElementsByTagName("fieldset");
-        // disableFormInput(loadingWheel, forms, searchForm);
+        disableFormInput(loadingWheel, searchForm);
+        document.getElementById("errormessage").style = {display: "block"}
         
        
         const res = await fetch('/api/getFlights', {
@@ -35,10 +35,10 @@ export default function Home() {
         if (result.error) {
             throwError(result.error);
         } else {
+            enableFormInput(loadingWheel, searchForm);
             if (result.data[0]) {
                 // call function to format the data
                setFlightData(await formatData(result.data));
-            //    enableFormInput(loadingWheel, forms, searchForm);
                
             }
             else {
@@ -47,17 +47,15 @@ export default function Home() {
         }
     }
 
-    // function disableFormInput(loadingWheel, forms, searchForm) {
-    //     searchForm[0].style.backgroundColor = "#E5E7E9";
-    //     loadingWheel.style.visibility = 'visible';
-    //     searchForm[0].setAttribute("disabled", "true")
-    // }
+    function disableFormInput(loadingWheel, searchForm) {
+        loadingWheel.style.visibility = 'visible';
+        searchForm[0].setAttribute("disabled", "true")
+    }
 
-    // function enableFormInput(loadingWheel, forms, searchForm) {
-    //     loadingWheel.style.visibility = 'hidden';
-    //     searchForm[0].style.backgroundColor = "white";
-    //     searchForm[0].removeAttribute("disabled")
-    // }
+    function enableFormInput(loadingWheel, searchForm) {
+        loadingWheel.style.visibility = 'hidden';
+        searchForm[0].removeAttribute("disabled")
+    }
     const [flightData, setFlightData] = useState([{flyFromAirport: '', flyToAirport: '', flyFromCity: '', flyToCity: '', dateOut: '', dateBack: '', price: '', airline: '', bookingLink: ''}]);
 
     async function getAirlineName(code) {
@@ -107,7 +105,7 @@ export default function Home() {
     /* If no flight is returned display an error message */
     function noFlight() {
         setFlightData([{flyFromAirport: '', flyToAirport: '', flyFromCity: '', flyToCity: '', dateOut: '', dateBack: '', price: '', airline: '', bookingLink: ''}])
-        document.getElementById("errormessage").innerHTML = "No Flights Available!"
+        document.getElementById("errormessage").style = {display: ""}
     }
 
     /* current month incremented by 2 as javascript date counts month from 0
@@ -128,10 +126,12 @@ export default function Home() {
         <section >
 
                 <div className='row justify-content-between p-5 vh-100 vw-90'>
-                    <div className='col-3 p-5 mt-5 h-75 form-group row text-light'>
+                    <div className='col-3 py-5 mt-5 h-75 form-group row text-light'>
+                        
                         <fieldset>
+                            <h1>Find Flights</h1>
                             <form onSubmit={getFlight}>
-                                <h1>Find Flights</h1>
+                                
                                 <label>Departure Airport</label><input className="form-control" id="departure" name="departure" type="text" defaultValue="Edinburgh"></input>
                                                     
                                 <label>Type of Holiday</label>
@@ -165,11 +165,13 @@ export default function Home() {
 
                     <div className='col-7 px-5 h-100 overflow-scroll'>
                         <h1>Results</h1>
+                        <div style={{display: "none"}} className="alert alert-danger" id="errormessage">No Flights Available!</div>
                         {flightData.map((d) => (<ResultSummary dest={d.flyToCity} outgoing={d.dateOut} back={d.dateBack} price={d.price} airline={d.airline}/>))}
                         <div id="loading" className={styles.loading}></div>
+                          
                     </div>
                     
-                    <label className={styles.error} id="errormessage"></label>  
+                    
                 </div>
                 <div className='row'>
 

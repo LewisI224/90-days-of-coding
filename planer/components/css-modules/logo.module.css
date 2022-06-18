@@ -13,7 +13,7 @@
     content: '';
     top: -10%;
     left:-75%;
-    background: #456BD9;
+    background: var(--sky-blue);
     border-radius: 100%;
     position: absolute;
     display: block;
@@ -25,6 +25,9 @@
 
 .logo {
     position: absolute;
-    width: 25%;
+    width: 20%;
     z-index: -998;
+    top: 3%;
+    left: 3%;
+
 }
